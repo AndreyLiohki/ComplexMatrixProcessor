@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ComplexMatrixProcessor\\Matrices\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Matrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Matrices\\Matrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\ComplexNumbers.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Matrices\\ComplexNumbers.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\SquareMatrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Matrices\\SquareMatrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Matrices\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Decompositions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Matrices\\Decompositions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\RectangularMatrixDecomposition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Matrices\\RectangularMatrixDecomposition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ComplexNumbers.h",
+              "DocumentMoniker": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\ComplexNumbers.h",
+              "RelativeDocumentMoniker": "Matrices\\ComplexNumbers.h",
+              "ToolTip": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\ComplexNumbers.h",
+              "RelativeToolTip": "Matrices\\ComplexNumbers.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-07T08:34:11.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SquareMatrix.h",
+              "DocumentMoniker": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\SquareMatrix.h",
+              "RelativeDocumentMoniker": "Matrices\\SquareMatrix.h",
+              "ToolTip": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\SquareMatrix.h",
+              "RelativeToolTip": "Matrices\\SquareMatrix.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-07T07:29:03.195Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Matrix.h",
+              "DocumentMoniker": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Matrix.h",
+              "RelativeDocumentMoniker": "Matrices\\Matrix.h",
+              "ToolTip": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Matrix.h",
+              "RelativeToolTip": "Matrices\\Matrix.h",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-07T07:29:03.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RectangularMatrixDecomposition.h",
+              "DocumentMoniker": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\RectangularMatrixDecomposition.h",
+              "RelativeDocumentMoniker": "Matrices\\RectangularMatrixDecomposition.h",
+              "ToolTip": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\RectangularMatrixDecomposition.h",
+              "RelativeToolTip": "Matrices\\RectangularMatrixDecomposition.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-07T08:04:36.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Decompositions.h",
+              "DocumentMoniker": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Decompositions.h",
+              "RelativeDocumentMoniker": "Matrices\\Decompositions.h",
+              "ToolTip": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Decompositions.h",
+              "RelativeToolTip": "Matrices\\Decompositions.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-07T07:48:58.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Source.cpp",
+              "RelativeDocumentMoniker": "Matrices\\Source.cpp",
+              "ToolTip": "D:\\ComplexMatrixProcessor\\Matrices\\Matrices\\Source.cpp",
+              "RelativeToolTip": "Matrices\\Source.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-07T07:29:03.219Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

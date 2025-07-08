@@ -19,7 +19,11 @@ public:
 			throw runtime_error("Matrix is not square");
 		}
 	}
-	
+    
+    size_t matrixSize() const {
+        return this->getRows();
+    }
+
 	static SquareMatrix identity(size_t n) {
 		SquareMatrix I(n);
 		for (size_t i = 0; i < n; ++i) {
@@ -40,7 +44,7 @@ public:
 		return this->hermitianConjugated() == *this;
 	}
 	bool isUnitary() const {
-		return this->hermitianConjugated() * (*this) == identity(size());
+		return (this->hermitianConjugated() * (*this)) == identity(this->matrixSize());
 	}
     int rank(const Matrix& A) {
         Matrix temp = A;
