@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\ComplexNumber\\ComplexNumber.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\ComplexNumber\\ComplexNumber.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\Matrix\\Matrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\Matrix\\Matrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\algebra\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:algebra\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:core\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\decompositions\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:decompositions\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,46 +30,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CMakeLists.txt",
-              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\decompositions\\CMakeLists.txt",
-              "RelativeDocumentMoniker": "decompositions\\CMakeLists.txt",
-              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\decompositions\\CMakeLists.txt",
-              "RelativeToolTip": "decompositions\\CMakeLists.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-08T16:48:08.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CMakeLists.txt",
-              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\CMakeLists.txt",
-              "RelativeDocumentMoniker": "core\\CMakeLists.txt",
-              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\CMakeLists.txt",
-              "RelativeToolTip": "core\\CMakeLists.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-08T16:43:28.184Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CMakeLists.txt",
-              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\algebra\\CMakeLists.txt",
-              "RelativeDocumentMoniker": "algebra\\CMakeLists.txt",
-              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\algebra\\CMakeLists.txt",
-              "RelativeToolTip": "algebra\\CMakeLists.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-08T16:39:47.045Z",
+              "Title": "Matrix.h",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\Matrix\\Matrix.h",
+              "RelativeDocumentMoniker": "core\\Matrix\\Matrix.h",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\Matrix\\Matrix.h",
+              "RelativeToolTip": "core\\Matrix\\Matrix.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAJYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-08T23:36:00.722Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ComplexNumber.h",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\ComplexNumber\\ComplexNumber.h",
+              "RelativeDocumentMoniker": "core\\ComplexNumber\\ComplexNumber.h",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\core\\ComplexNumber\\ComplexNumber.h",
+              "RelativeToolTip": "core\\ComplexNumber\\ComplexNumber.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAGoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-08T18:01:15.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\MyProject\\MyProject\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
@@ -81,8 +64,7 @@
               "RelativeToolTip": "main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-07T09:17:08.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-07T09:17:08.592Z"
             }
           ]
         }

@@ -8,9 +8,14 @@
   "ExpandedNodes": [
     "",
     "\\algebra",
+    "\\algebra\\MatrixProperties",
     "\\app",
-    "\\core"
+    "\\core",
+    "\\core\\ComplexNumber",
+    "\\core\\Matrix",
+    "\\core\\SquareMatrix",
+    "\\decompositions",
+    "\\decompositions\\CholeskyDecomposition"
   ],
-  "SelectedNode": "\\core\\ComplexNumber.h",
   "PreviewInSolutionExplorer": false
 }

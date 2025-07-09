@@ -114,22 +114,6 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 build cmake_object_order_depends_target_core: phony || .
 
-build core\CMakeFiles\core.dir\ComplexNumber\ComplexNumber.cpp.obj: CXX_COMPILER__core_unscanned_Debug C$:\Users\Andrey\source\repos\MyProject\MyProject\core\ComplexNumber\ComplexNumber.cpp || cmake_object_order_depends_target_core
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
-  INCLUDES = -IC:\Users\Andrey\source\repos\MyProject\MyProject\core -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\ComplexNumber -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\Matrix -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\SquareMatrix -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\CholeskyDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\LUPDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\QRDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\SVDDecomposition
-  OBJECT_DIR = core\CMakeFiles\core.dir
-  OBJECT_FILE_DIR = core\CMakeFiles\core.dir\ComplexNumber
-  TARGET_COMPILE_PDB = core\CMakeFiles\core.dir\core.pdb
-  TARGET_PDB = core\core.pdb
-
-build core\CMakeFiles\core.dir\Matrix\Matrix.cpp.obj: CXX_COMPILER__core_unscanned_Debug C$:\Users\Andrey\source\repos\MyProject\MyProject\core\Matrix\Matrix.cpp || cmake_object_order_depends_target_core
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
-  INCLUDES = -IC:\Users\Andrey\source\repos\MyProject\MyProject\core -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\ComplexNumber -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\Matrix -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\SquareMatrix -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\CholeskyDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\LUPDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\QRDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\SVDDecomposition
-  OBJECT_DIR = core\CMakeFiles\core.dir
-  OBJECT_FILE_DIR = core\CMakeFiles\core.dir\Matrix
-  TARGET_COMPILE_PDB = core\CMakeFiles\core.dir\core.pdb
-  TARGET_PDB = core\core.pdb
-
 build core\CMakeFiles\core.dir\SquareMatrix\SquareMatrix.cpp.obj: CXX_COMPILER__core_unscanned_Debug C$:\Users\Andrey\source\repos\MyProject\MyProject\core\SquareMatrix\SquareMatrix.cpp || cmake_object_order_depends_target_core
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
   INCLUDES = -IC:\Users\Andrey\source\repos\MyProject\MyProject\core -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\ComplexNumber -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\Matrix -IC:\Users\Andrey\source\repos\MyProject\MyProject\core\SquareMatrix -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\CholeskyDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\LUPDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\QRDecomposition -IC:\Users\Andrey\source\repos\MyProject\MyProject\decompositions\SVDDecomposition
@@ -146,7 +130,7 @@ build core\CMakeFiles\core.dir\SquareMatrix\SquareMatrix.cpp.obj: CXX_COMPILER__
 #############################################
 # Link the static library core\core.lib
 
-build core\core.lib: CXX_STATIC_LIBRARY_LINKER__core_Debug core\CMakeFiles\core.dir\ComplexNumber\ComplexNumber.cpp.obj core\CMakeFiles\core.dir\Matrix\Matrix.cpp.obj core\CMakeFiles\core.dir\SquareMatrix\SquareMatrix.cpp.obj
+build core\core.lib: CXX_STATIC_LIBRARY_LINKER__core_Debug core\CMakeFiles\core.dir\SquareMatrix\SquareMatrix.cpp.obj
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = core\CMakeFiles\core.dir

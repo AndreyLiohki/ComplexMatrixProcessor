@@ -1,7 +1,7 @@
 set(CORE_SRC
-    "ComplexNumber/ComplexNumber.cpp"
+    
     "ComplexNumber/ComplexNumber.h"
-    "Matrix/Matrix.cpp"
+    
     "Matrix/Matrix.h"
     "SquareMatrix/SquareMatrix.cpp"
     "SquareMatrix/SquareMatrix.h"

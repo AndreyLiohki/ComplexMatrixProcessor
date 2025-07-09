@@ -1,0 +1,138 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "core",
+					"jsonFile" : "directory-core-Debug-e3757ce4a321da3133c4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "core",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "algebra",
+					"jsonFile" : "directory-algebra-Debug-bb975bc561e740675218.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "algebra",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "decompositions",
+					"jsonFile" : "directory-decompositions-Debug-5e097af741ef84e4e96a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "decompositions",
+					"targetIndexes" : 
+					[
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "MatrixAlgebraProject",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "MatrixApp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MatrixApp-Debug-4ec71494018fbd375c99.json",
+					"name" : "MatrixApp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "algebra::@693aadc3ee63ffddbf69",
+					"jsonFile" : "target-algebra-Debug-61b2435ca5c17f34e3ab.json",
+					"name" : "algebra",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "core::@57760688d1f824db5d9c",
+					"jsonFile" : "target-core-Debug-7e3ecd347ed5b6ebafc0.json",
+					"name" : "core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "decompositions::@4883c53ba2e333ccd933",
+					"jsonFile" : "target-decompositions-Debug-18d1666d368d405666ad.json",
+					"name" : "decompositions",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Andrey/source/repos/MyProject/MyProject/out/build/x64-Debug",
+		"source" : "C:/Users/Andrey/source/repos/MyProject/MyProject"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
