@@ -59,7 +59,20 @@ namespace Algebra {
 			return transpose(std::move(matrix));
 		}
 
+		template<typename T>
+		T trace(const Core::Matrix<T>& matrix) {
+			if (!matrix.is_square()) {
+				throw std::invalid_argument("It isnon-sqaure Matrix");
+			}
+			T result{};
+			for (size_t i = 0; i < matrix.get_rows(); ++i) {
+				result += matrix(i, i);
+			}
 
+			return result;
+		}
+		
+		
 		//NOT FINISHED
 		template<typename T>
 		long rank(const Core::Matrix<T>& matrix,
