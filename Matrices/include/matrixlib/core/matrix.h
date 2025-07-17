@@ -184,6 +184,14 @@ namespace Core {
             return *this;
         }
 
+        void identity_matrix(const T& value) {
+            if (rows != columns) {
+                throw std::invalid_argument("matrix must be square");
+            }
+            for (size_t i = 0; i < rows; ++i) {
+                (*this)(i, i) = value;
+            }
+        }
         void fill(const T& value) {
             for (std::size_t i = 0; i < rows; ++i) {
                 for (std::size_t j = 0; j < columns; ++j) {

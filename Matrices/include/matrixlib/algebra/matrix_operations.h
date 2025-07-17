@@ -74,18 +74,18 @@ namespace Algebra {
 		}
 		
 		
-		//NOT FINISHED
-		template<typename T>
-		long rank(const Core::Matrix<T>& matrix,
-			typename std::conditional_t<is_complex<T>::value,
-			typename T::value_type, T> epsilon) {
+		////NOT FINISHED
+		//template<typename T>
+		//long rank(const Core::Matrix<T>& matrix,
+		//	typename std::conditional_t<is_complex<T>::value,
+		//	typename T::value_type, T> epsilon) {
 
-			long current_rank = std::max(matrix.get_columns(), matrix.get_rows());
-			std::vector<bool> used_line(matrix.get_rows());
-			for (size_t i = 0; i < matrix.get_rows(); ++i) {
-				int amount_of_zeros = 0;
-				for (size_t j = 0; j < matrix.get_columns(); ++j)
-			}
-		}
+		//	long current_rank = std::max(matrix.get_columns(), matrix.get_rows());
+		//	std::vector<bool> used_line(matrix.get_rows());
+		//	for (size_t i = 0; i < matrix.get_rows(); ++i) {
+		//		int amount_of_zeros = 0;
+		//		for (size_t j = 0; j < matrix.get_columns(); ++j)
+		//	}
+		//}
 	}
 }

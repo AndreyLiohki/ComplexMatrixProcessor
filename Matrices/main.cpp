@@ -5,6 +5,7 @@
 #include "include/matrixlib/algebra/matrix_operations.h"
 #include "include/matrixlib/algebra/matrix_properties.h"
 #include "include/matrixlib/algebra/norms.h"
+#include "include/matrixlib/decompositions/lup_decomposition.h"
 
 int main() {
 
