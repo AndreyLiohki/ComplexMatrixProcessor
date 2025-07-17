@@ -7,6 +7,15 @@ namespace Core {
 	namespace Traits {
 
 		template<typename T>
+		struct is_valid_matrix_type {
+			static constexpr bool value =
+				std::is_floating_point_v<T> ||
+				std::is_same_v<T, std::complex<float>> ||
+				std::is_same_v<T, std::complex<double>> ||
+				std::is_same_v <T, std::complex <long double>>;
+		};
+
+		template<typename T>
 		struct is_complex : std::false_type {};
 
 		template<typename T>
@@ -25,6 +34,6 @@ namespace Core {
 				return T(1e-10);
 			}
 		}
-	
+
 	}
 }

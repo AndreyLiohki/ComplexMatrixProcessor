@@ -4,21 +4,18 @@
 #include <vector>
 #include <complex>
 
+#include "type_traits.h"
+
 namespace Core {
 
-	template<typename T>
-	struct is_valid_matrix_type {
-		static constexpr bool value =
-			std::is_floating_point_v<T> ||
-			std::is_same_v<T, std::complex<float>> ||
-			std::is_same_v<T, std::complex<double>> ||
-			std::is_same_v < T, std::complex <long double>>;
-	};
+    using Core::Traits::is_valid_matrix_type;
 
 	template<typename T>
 	class Matrix {
 	public:
         Matrix() noexcept : rows(0), columns(0) {}
+        
+        
         Matrix(size_t rows, size_t columns)
             noexcept(std::is_nothrow_constructible_v<std::vector<T>>)
             : data(rows, std::vector<T>(columns)),
@@ -29,6 +26,8 @@ namespace Core {
             : data(rows, std::vector<T>(columns, value)),
             rows(rows),
             columns(columns) {}
+        
+        
         explicit Matrix(const std::vector<std::vector<T>>& data)
             : data(data),
             rows(data.size()),
@@ -36,8 +35,9 @@ namespace Core {
         {
             check_rectangular();
         }
+        
+        
         Matrix(const Matrix& other) = default;
-        Matrix(Matrix&& other) noexcept = default;
         Matrix(Matrix&& other) noexcept
             : data(std::move(other.data)),
             rows(other.rows),
@@ -75,6 +75,8 @@ namespace Core {
             lhs += rhs;
             return std::move(lhs);
         }    
+        
+        
         [[nodiscard]] friend Matrix operator-(const Matrix& lhs, const Matrix& rhs) {
             lhs.check_dimensions(rhs);
             Matrix result(lhs.rows, lhs.columns);
@@ -97,6 +99,8 @@ namespace Core {
             lhs -= rhs;
             return std::move(lhs);
         }
+        
+        
         [[nodiscard]] friend Matrix operator*(const Matrix& lhs, const Matrix& rhs) {
             if (lhs.columns != rhs.rows) {
                 throw std::invalid_argument("Incompatible matrix dimensions for multiplication");
@@ -123,12 +127,18 @@ namespace Core {
         [[nodiscard]] friend Matrix operator*(T scalar, const Matrix& matrix) {
             return matrix * scalar;
         }
+        
+        
         friend bool operator==(const Matrix& lhs, const Matrix& rhs) {
             return lhs.data == rhs.data;
         }
+        
+        
         friend bool operator!=(const Matrix& lhs, const Matrix& rhs) {
             return !(lhs == rhs);
         }
+        
+        
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
             for (const auto& row : matrix.data) {
                 for (const auto& elem : row) {
@@ -141,6 +151,8 @@ namespace Core {
  
         T& operator()(size_t i, size_t j) { return data[i][j]; }
         const T& operator()(size_t i, size_t j) const { return data[i][j]; }
+       
+        
         Matrix& operator+=(const Matrix& other) {
             check_dimensions(other);
             for (size_t i = 0; i < rows; ++i) {
@@ -150,6 +162,8 @@ namespace Core {
             }
             return *this;
         }
+        
+        
         Matrix& operator-=(const Matrix& other) {
             check_dimensions(other);
             for (size_t i = 0; i < rows; ++i) {
@@ -159,6 +173,8 @@ namespace Core {
             }
             return *this;
         }
+       
+        
         Matrix& operator*=(T scalar) {
             for (auto& row : data) {
                 for (auto& elem : row) {
@@ -181,18 +197,25 @@ namespace Core {
        
         auto begin() { return data.begin(); }
         auto end() { return data.end(); }
+        
+        
         auto begin() const { return data.begin(); }
         auto end() const { return data.end(); }
+        
+        
         auto cbegin() const { return data.cbegin(); }
         auto cend() const { return data.cend(); }
-       private:
+       
+
+    private:
 		static_assert(
 			is_valid_matrix_type<T>::value,
-			"Matrix<T> requires T to be either float, double or ComplexNumber<float/double>"
-			);
+			"Matrix<T> requires T to be either float, double or ComplexNumber<float/double>");
 
-		std::vector<std::vector<T>> data;
-		size_t rows;
+		
+        std::vector<std::vector<T>> data;
+		
+        size_t rows;
 		size_t columns;
 
         void check_rectangular() const {
@@ -207,5 +230,7 @@ namespace Core {
                 throw std::invalid_argument("Matrix dimensions must agree");
             }
         }
+    
+
     };
 }

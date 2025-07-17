@@ -59,6 +59,7 @@ namespace Algebra {
 			return transpose(std::move(matrix));
 		}
 
+
 		template<typename T>
 		T trace(const Core::Matrix<T>& matrix) {
 			if (!matrix.is_square()) {
@@ -83,7 +84,7 @@ namespace Algebra {
 			std::vector<bool> used_line(matrix.get_rows());
 			for (size_t i = 0; i < matrix.get_rows(); ++i) {
 				int amount_of_zeros = 0;
-				for (size_t j = 0; j < matrix.)
+				for (size_t j = 0; j < matrix.get_columns(); ++j)
 			}
 		}
 	}

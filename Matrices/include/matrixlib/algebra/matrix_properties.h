@@ -127,16 +127,15 @@ namespace Algebra {
 			if (!matrix.is_square()) {
 				return false;
 			}
-			Core::Matrix<T> hermitian = Algebra::Operations::hermitian_matrix(matrix);
 			
-			for (size_t i = 0; i < n; ++i) {
+			for (size_t i = 0; i < matrix.get_rows(); ++i) {
 				if (!is_approximately_zero(std::real(matrix(i, i)), epsilon)) {
 					return false;
 				}
 			}
 			for (size_t i = 0; i < matrix.get_rows(); ++i) {
 				for (size_t j = 0; j < matrix.get_columns(); ++j) {
-					if (!is_approximately_zero(matrix(i, j) - (-hermitian(i, j)), epsilon)) {
+					if (!is_approximately_zero(matrix(i, j) - (-std::conj(matrix(j, i))), epsilon)) {
 						return false;
 					}
 				}
