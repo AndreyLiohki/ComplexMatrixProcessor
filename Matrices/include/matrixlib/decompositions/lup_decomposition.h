@@ -38,7 +38,6 @@ namespace Decompositions {
 				P_ = Core::Matrix<T>(matrix.get_rows(), matrix.get_columns(), 0);
 
 				P_.identity_matrix();
-				L_.identity_matrix();
 
 				for (size_t i = 0; i < copy_matrix.get_columns(); ++i) {
 
@@ -59,7 +58,33 @@ namespace Decompositions {
 						copy_matrix.swap_rows(i, row_to_swap);
 						P_.swap_rows(i, row_to_swap);
 					}
+
+					for (size_t j = i+1; j < copy_matrix.get_rows(); ++j) {
+						copy_matrix(j, i) /= copy_matrix(i, i);
+						for (size_t k = i+1; k < copy_matrix.get_columns(); ++k) {
+							copy_matrix(j, k) -= copy_matrix(j, i) * copy_matrix(i, k);
+						}
+					}
 				}
+
+				for (size_t i = 0; i < copy_matrix.get_rows(); ++i) {
+					for (size_t j = 0; j < copy_matrix.get_columns(); ++j) {
+						if (i >= j) {
+							if(i == j){
+								L_(i, j) = 1;
+								U_(i, j) = copy_matrix(i, j);
+							}
+							else {
+								L_(i,j) = copy_matrix(i, j)
+							}
+						}
+						else {
+							U_(i, j) = copy_matrix(i, j);
+						}
+					}
+				}
+				decomposed = true;
+
 			}
 
 		public:
