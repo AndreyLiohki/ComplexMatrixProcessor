@@ -19,7 +19,7 @@ namespace Algebra {
 		[[nodiscard]] constexpr 
 			typename std::enable_if<std::is_floating_point_v<T>, bool>::type
 			is_approximately_zero(const T value, const EpsilonType<T> epsilon) noexcept{
-			return std::abs(value) < epsilon;
+			return std::fabs(value) < epsilon;
 		}
 		template<typename T>
 		[[nodiscard]] constexpr 
