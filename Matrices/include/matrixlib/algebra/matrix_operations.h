@@ -74,18 +74,57 @@ namespace Algebra {
 		}
 		
 		
-		////NOT FINISHED
-		//template<typename T>
-		//long rank(const Core::Matrix<T>& matrix,
-		//	typename std::conditional_t<is_complex<T>::value,
-		//	typename T::value_type, T> epsilon) {
+		template<typename T>
+		long rank(const Core::Matrix<T>& matrix,
+			typename std::conditional_t<is_complex<T>::value,
+			typename T::value_type, T> epsilon) {
 
-		//	long current_rank = std::max(matrix.get_columns(), matrix.get_rows());
-		//	std::vector<bool> used_line(matrix.get_rows());
-		//	for (size_t i = 0; i < matrix.get_rows(); ++i) {
-		//		int amount_of_zeros = 0;
-		//		for (size_t j = 0; j < matrix.get_columns(); ++j)
-		//	}
-		//}
-	}
+			if (matrix.get_rows() == 0 || matrix.get_columns() == 0) {
+				return 0;
+			}
+
+			Core::Matrix<T> work_matrix = matrix;
+			long rank = 0;
+
+			std::vector<bool> used_rows(matrix.get_rows(), false);
+
+			for (size_t col = 0; col < matrix.get_columns(); ++col) {
+				size_t pivot_row = 0;
+				auto max_val = static_cast<decltype(epsilon)>(0);
+
+				for (size_t row = 0; row < matrix.get_rows(); ++row) {
+					if (!used_rows[row]) {
+						auto current_val = std::abs(work_matrix(row, col));
+						if (current_val > max_val) {
+							max_val = current_val;
+							pivot_row = row;
+						}
+					}
+				}
+
+				if (max_val < epsilon) {
+					continue;
+				}
+
+				used_rows[pivot_row] = true;
+				rank++;
+
+				for (size_t j = col + 1; j < matrix.get_columns(); ++j) {
+					work_matrix(pivot_row, j) /= work_matrix(pivot_row, col);
+				}
+
+				for (size_t row = 0; row < matrix.get_rows(); ++row) {
+					if (!used_rows[row] && row != pivot_row) {
+						for (size_t j = col + 1; j < matrix.get_columns(); ++j) {
+							work_matrix(row, j) -= work_matrix(row, col) * work_matrix(pivot_row, j);
+						}
+					}
+				}
+			}
+
+			return rank;
+		}
+	
+
+}
 }
