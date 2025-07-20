@@ -37,7 +37,7 @@ namespace Decompositions {
 				U_ = Core::Matrix<T>(matrix.get_rows(), matrix.get_columns(), 0);
 				P_ = Core::Matrix<T>(matrix.get_rows(), matrix.get_columns(), 0);
 
-				P_.identity_matrix();
+				P_.identity_matrix(1.0);
 
 				for (size_t i = 0; i < copy_matrix.get_columns(); ++i) {
 
@@ -75,7 +75,7 @@ namespace Decompositions {
 								U_(i, j) = copy_matrix(i, j);
 							}
 							else {
-								L_(i,j) = copy_matrix(i, j)
+								L_(i, j) = copy_matrix(i, j);
 							}
 						}
 						else {
@@ -96,6 +96,7 @@ namespace Decompositions {
 				if (matrix.get_rows()) {
 					throw std::invalid_argument("Matrix must not be empty");
 				}
+				computeDecomposition(matrix);
 			}
 
 			const Core::Matrix<T>& getL() const { return L_; }

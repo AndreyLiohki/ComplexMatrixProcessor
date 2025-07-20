@@ -203,7 +203,7 @@ namespace Core {
             return rows == columns;
         }
         void swap_rows(const size_t i, const size_t j) {
-            data.swap(i, j);
+           std::swap(data[i], data[j]);
         }
 
         auto begin() { return data.begin(); }
