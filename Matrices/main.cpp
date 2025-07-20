@@ -30,6 +30,16 @@ int main() {
 	std::cout << std::endl;
 	std::cout << result_3;
 
+	std::cout << std::endl;
+
 	Decompositions::LUP_Decomposition::Lup_Decomposition<double> obj(matrix_1);
 	std::cout << obj.getL();
+	std::cout << std::endl;
+	std::cout << obj.getU();
+	std::cout << std::endl; 
+	std::cout << obj.getP();
+	std::cout << std::endl;
+	std::cout << obj.getL() * obj.getU();
+	std::cout << std::endl;
+	std::cout << obj.getP() * matrix_1;
 }
