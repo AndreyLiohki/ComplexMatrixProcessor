@@ -24,22 +24,16 @@ int main() {
 	auto result = (matrix_1 + matrix_2);
 	auto result_2 = (matrix_1 * matrix_2);
 	auto result_3 = (matrix_1 - matrix_2);
-	std::cout << result;
-	std::cout << std::endl;
-	std::cout << result_2;
-	std::cout << std::endl;
-	std::cout << result_3;
-
-	std::cout << std::endl;
 
 	Decompositions::LUP_Decomposition::Lup_Decomposition<double> obj(matrix_1);
 	std::cout << obj.getL();
 	std::cout << std::endl;
+
 	std::cout << obj.getU();
 	std::cout << std::endl; 
+
 	std::cout << obj.getP();
 	std::cout << std::endl;
-	std::cout << obj.getL() * obj.getU();
-	std::cout << std::endl;
-	std::cout << obj.getP() * matrix_1;
+
+
 }

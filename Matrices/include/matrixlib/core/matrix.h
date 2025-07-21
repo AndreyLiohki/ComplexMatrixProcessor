@@ -73,6 +73,7 @@ namespace Core {
         }
         [[nodiscard]] friend Matrix operator+(Matrix&& lhs, Matrix&& rhs) {
             lhs += rhs;
+            rhs = Matrix<T>();
             return std::move(lhs);
         }    
         
