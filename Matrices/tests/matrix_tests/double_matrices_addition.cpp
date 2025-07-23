@@ -25,17 +25,17 @@ namespace {
     TEST_F(DoubleMatrixAdditionTest, BasicAddition) {
         auto result = m1 + m2;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 3.0);
-        EXPECT_FLOAT_EQ(result(0, 1), 3.0);
-        EXPECT_FLOAT_EQ(result(1, 0), 3.0);
-        EXPECT_FLOAT_EQ(result(1, 1), 3.0);
+        EXPECT_DOUBLE_EQ(result(0, 0), 3.0);
+        EXPECT_DOUBLE_EQ(result(0, 1), 3.0);
+        EXPECT_DOUBLE_EQ(result(1, 0), 3.0);
+        EXPECT_DOUBLE_EQ(result(1, 1), 3.0);
     }
 
     TEST_F(DoubleMatrixAdditionTest, RvalueLeftAddition) {
         Matrix<double> temp = m1;
         auto result = std::move(temp) + m2;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 3.0);
+        EXPECT_DOUBLE_EQ(result(0, 0), 3.0);
         EXPECT_EQ(temp.get_rows(), 0);
     }
 
@@ -43,7 +43,7 @@ namespace {
         Matrix<double> temp = m2;
         auto result = m1 + std::move(temp);
 
-        EXPECT_FLOAT_EQ(result(0, 0), 3.0);
+        EXPECT_DOUBLE_EQ(result(0, 0), 3.0);
         EXPECT_EQ(temp.get_rows(), 0);
     }
 
@@ -52,7 +52,7 @@ namespace {
         Matrix<double> temp2 = m2;
         auto result = std::move(temp1) + std::move(temp2);
 
-        EXPECT_FLOAT_EQ(result(0, 0), 3.0);
+        EXPECT_DOUBLE_EQ(result(0, 0), 3.0);
         EXPECT_EQ(temp1.get_rows(), 0);
         EXPECT_EQ(temp2.get_rows(), 0);
     }
@@ -60,24 +60,24 @@ namespace {
     TEST_F(DoubleMatrixAdditionTest, PlusEqualsOperator) {
         m1 += m2;
 
-        EXPECT_FLOAT_EQ(m1(0, 0), 3.0);
-        EXPECT_FLOAT_EQ(m1(1, 1), 3.0);
+        EXPECT_DOUBLE_EQ(m1(0, 0), 3.0);
+        EXPECT_DOUBLE_EQ(m1(1, 1), 3.0);
     }
 
     TEST_F(DoubleMatrixAdditionTest, EmptyMatrixAddition) {
         auto result = m1 + m_empty;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 1.0);
-        EXPECT_FLOAT_EQ(result(1, 1), 1.0);
+        EXPECT_DOUBLE_EQ(result(0, 0), 1.0);
+        EXPECT_DOUBLE_EQ(result(1, 1), 1.0);
     }
 
     TEST_F(DoubleMatrixAdditionTest, NonUniformAddition) {
         auto result = m_non_uniform + m2;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 3.0);
-        EXPECT_FLOAT_EQ(result(0, 1), 4.0);
-        EXPECT_FLOAT_EQ(result(1, 0), 5.0);
-        EXPECT_FLOAT_EQ(result(1, 1), 6.0);
+        EXPECT_DOUBLE_EQ(result(0, 0), 3.0);
+        EXPECT_DOUBLE_EQ(result(0, 1), 4.0);
+        EXPECT_DOUBLE_EQ(result(1, 0), 5.0);
+        EXPECT_DOUBLE_EQ(result(1, 1), 6.0);
     }
 
     TEST_F(DoubleMatrixAdditionTest, IncompatibleSizes) {

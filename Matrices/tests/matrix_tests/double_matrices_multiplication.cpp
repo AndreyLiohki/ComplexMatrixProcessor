@@ -28,26 +28,26 @@ namespace {
     TEST_F(DoubleMatrixMultiplicationTest, SquareMatricesMultiplication) {
         auto result = m1 * m2;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 4.0f);
-        EXPECT_FLOAT_EQ(result(0, 1), 4.0f);
-        EXPECT_FLOAT_EQ(result(1, 0), 4.0f);
-        EXPECT_FLOAT_EQ(result(1, 1), 4.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 4.0f);
+        EXPECT_DOUBLE_EQ(result(0, 1), 4.0f);
+        EXPECT_DOUBLE_EQ(result(1, 0), 4.0f);
+        EXPECT_DOUBLE_EQ(result(1, 1), 4.0f);
     }
 
     TEST_F(DoubleMatrixMultiplicationTest, RectangularMatricesMultiplication) {
         auto result = m3 * m4;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 58.0f);
-        EXPECT_FLOAT_EQ(result(0, 1), 64.0f);
-        EXPECT_FLOAT_EQ(result(1, 0), 139.0f);
-        EXPECT_FLOAT_EQ(result(1, 1), 154.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 58.0f);
+        EXPECT_DOUBLE_EQ(result(0, 1), 64.0f);
+        EXPECT_DOUBLE_EQ(result(1, 0), 139.0f);
+        EXPECT_DOUBLE_EQ(result(1, 1), 154.0f);
     }
 
     TEST_F(DoubleMatrixMultiplicationTest, RvalueLeftMultiplication) {
         Matrix<double> temp = m1;
         auto result = std::move(temp) * m2;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 4.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 4.0f);
         EXPECT_EQ(temp.get_rows(), 0);
     }
 
@@ -55,7 +55,7 @@ namespace {
         Matrix<double> temp = m2;
         auto result = m1 * std::move(temp);
 
-        EXPECT_FLOAT_EQ(result(0, 0), 4.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 4.0f);
         EXPECT_EQ(temp.get_rows(), 0);
     }
 
@@ -64,7 +64,7 @@ namespace {
         Matrix<double> temp2 = m2;
         auto result = std::move(temp1) * std::move(temp2);
 
-        EXPECT_FLOAT_EQ(result(0, 0), 4.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 4.0f);
         EXPECT_EQ(temp1.get_rows(), 0);
         EXPECT_EQ(temp2.get_rows(), 0);
     }
@@ -72,24 +72,24 @@ namespace {
     TEST_F(DoubleMatrixMultiplicationTest, ScalarMultiplicationRight) {
         auto result = m3 * 2.0f;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 2.0f);
-        EXPECT_FLOAT_EQ(result(0, 1), 4.0f);
-        EXPECT_FLOAT_EQ(result(1, 2), 12.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 2.0f);
+        EXPECT_DOUBLE_EQ(result(0, 1), 4.0f);
+        EXPECT_DOUBLE_EQ(result(1, 2), 12.0f);
     }
 
     TEST_F(DoubleMatrixMultiplicationTest, ScalarMultiplicationLeft) {
         auto result = 2.0f * m3;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 2.0f);
-        EXPECT_FLOAT_EQ(result(0, 1), 4.0f);
-        EXPECT_FLOAT_EQ(result(1, 2), 12.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 2.0f);
+        EXPECT_DOUBLE_EQ(result(0, 1), 4.0f);
+        EXPECT_DOUBLE_EQ(result(1, 2), 12.0f);
     }
 
     TEST_F(DoubleMatrixMultiplicationTest, EmptyMatrixMultiplication) {
         auto result = m1 * m_empty;
 
-        EXPECT_FLOAT_EQ(result(0, 0), 0.0f);
-        EXPECT_FLOAT_EQ(result(1, 1), 0.0f);
+        EXPECT_DOUBLE_EQ(result(0, 0), 0.0f);
+        EXPECT_DOUBLE_EQ(result(1, 1), 0.0f);
     }
 
     TEST_F(DoubleMatrixMultiplicationTest, IncompatibleSizes) {
