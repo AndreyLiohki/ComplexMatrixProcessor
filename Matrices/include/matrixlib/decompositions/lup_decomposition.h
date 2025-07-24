@@ -26,6 +26,8 @@ namespace Decompositions {
 
 			bool decomposed = false;
 
+			unsigned long long amount_of_permutations = 0;
+
 			bool is_decomposed() {
 				return decomposed;
 			}
@@ -57,6 +59,7 @@ namespace Decompositions {
 					if (row_to_swap != i) {
 						copy_matrix.swap_rows(i, row_to_swap);
 						P_.swap_rows(i, row_to_swap);
+						amount_of_permutations +=1 ;
 					}
 
 					for (size_t j = i+1; j < copy_matrix.get_rows(); ++j) {
@@ -99,9 +102,10 @@ namespace Decompositions {
 				computeDecomposition(matrix);
 			}
 
-			const Core::Matrix<T>& getL() const { return L_; }
-			const Core::Matrix<T>& getU() const { return U_; }
-			const Core::Matrix<T>& getP() const { return P_; }
+			const Core::Matrix<T>& get_L() const { return L_; }
+			const Core::Matrix<T>& get_U() const { return U_; }
+			const Core::Matrix<T>& get_P() const { return P_; }
+			const unsigned long long get_permutations() const { return amount_of_permutations; }
 		};
 
 	}

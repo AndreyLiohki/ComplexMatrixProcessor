@@ -93,11 +93,16 @@ namespace Core {
             return std::move(lhs);
         }
         [[nodiscard]] friend Matrix operator-(const Matrix& lhs, Matrix&& rhs) {
-            rhs -= lhs;
+            for (size_t i = 0; i < lhs.rows; ++i) {
+                for (size_t j = 0; j < lhs.columns; ++j) {
+                    rhs(i, j) = lhs(i, j) - rhs(i, j);
+                }
+            }
             return std::move(rhs);
         }
         [[nodiscard]] friend Matrix operator-(Matrix&& lhs, Matrix&& rhs) {
             lhs -= rhs;
+            rhs = Matrix<T>();
             return std::move(lhs);
         }
         
@@ -128,7 +133,73 @@ namespace Core {
         [[nodiscard]] friend Matrix operator*(T scalar, const Matrix& matrix) {
             return matrix * scalar;
         }
-        
+        [[nodiscard]] friend Matrix operator*(Matrix&& lhs, const Matrix& rhs) {
+            if (lhs.columns != rhs.rows) {
+                throw std::invalid_argument("Incompatible matrix dimensions for multiplication");
+            }
+
+            Matrix result(lhs.rows, rhs.columns);
+            for (size_t i = 0; i < lhs.rows; ++i) {
+                for (size_t j = 0; j < rhs.columns; ++j) {
+                    result.data[i][j] = 0;
+                    for (size_t k = 0; k < lhs.columns; ++k) {
+                        result.data[i][j] += lhs.data[i][k] * rhs.data[k][j];
+                    }
+                }
+            }
+            lhs = Matrix<T>();
+            return result;
+        }
+        [[nodiscard]] friend Matrix operator*(const Matrix& lhs, Matrix&& rhs) {
+            if (lhs.columns != rhs.rows) {
+                throw std::invalid_argument("Incompatible matrix dimensions for multiplication");
+            }
+
+            Matrix result(lhs.rows, rhs.columns);
+            for (size_t i = 0; i < lhs.rows; ++i) {
+                for (size_t j = 0; j < rhs.columns; ++j) {
+                    result.data[i][j] = 0;
+                    for (size_t k = 0; k < lhs.columns; ++k) {
+                        result.data[i][j] += lhs.data[i][k] * rhs.data[k][j];
+                    }
+                }
+            }
+            rhs = Matrix<T>();
+            return result;
+        }
+        [[nodiscard]] friend Matrix operator*(Matrix&& lhs, Matrix&& rhs) {
+            if (lhs.columns != rhs.rows) {
+                throw std::invalid_argument("Incompatible matrix dimensions for multiplication");
+            }
+
+            if (lhs.rows == lhs.rows && lhs.columns == rhs.columns) {
+                for (size_t i = 0; i < lhs.rows; ++i) {
+                    for (size_t j = 0; j < rhs.columns; ++j) {
+                        T sum = 0;
+                        for (size_t k = 0; k < lhs.columns; ++k) {
+                            sum += lhs.data[i][k] * rhs.data[k][j];
+                        }
+                        lhs.data[i][j] = sum;
+                    }
+                }
+                rhs = Matrix<T>();
+                return std::move(lhs);
+            }
+            else {
+                Matrix result(lhs.rows, rhs.columns);
+                for (size_t i = 0; i < lhs.rows; ++i) {
+                    for (size_t j = 0; j < rhs.columns; ++j) {
+                        result.data[i][j] = 0;
+                        for (size_t k = 0; k < lhs.columns; ++k) {
+                            result.data[i][j] += lhs.data[i][k] * rhs.data[k][j];
+                        }
+                    }
+                }
+                lhs = Matrix<T>();
+                rhs = Matrix<T>();
+                return result;
+            }
+        }
         
         friend bool operator==(const Matrix& lhs, const Matrix& rhs) {
             return lhs.data == rhs.data;
@@ -204,6 +275,9 @@ namespace Core {
             return rows == columns;
         }
         void swap_rows(const size_t i, const size_t j) {
+            if (i >= rows || j >= columns) {
+                throw std::out_of_range("matrix indeces is out of range");
+            }
            std::swap(data[i], data[j]);
         }
 

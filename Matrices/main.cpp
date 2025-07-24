@@ -26,14 +26,16 @@ int main() {
 	auto result_3 = (matrix_1 - matrix_2);
 
 	Decompositions::LUP_Decomposition::Lup_Decomposition<double> obj(matrix_1);
-	std::cout << obj.getL();
+	std::cout << obj.get_L();
 	std::cout << std::endl;
 
-	std::cout << obj.getU();
+	std::cout << obj.get_U();
 	std::cout << std::endl; 
 
-	std::cout << obj.getP();
+	std::cout << obj.get_P();
 	std::cout << std::endl;
+
+	std::cout << Algebra::Operations::determinant(obj);
 
 
 }

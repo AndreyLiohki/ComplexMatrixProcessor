@@ -5,6 +5,7 @@
 
 #include "../core/matrix.h"
 #include "../core/type_traits.h"
+#include "../decompositions/lup_decomposition.h"
 
 namespace Algebra {
 	namespace Operations {
@@ -75,8 +76,7 @@ namespace Algebra {
 		
 		
 		template<typename T>
-		long rank(const Core::Matrix<T>& matrix,
-			typename std::conditional_t<is_complex<T>::value,
+		long rank(const Core::Matrix<T>& matrix, typename std::conditional_t<is_complex<T>::value,
 			typename T::value_type, T> epsilon) {
 
 			if (matrix.get_rows() == 0 || matrix.get_columns() == 0) {
@@ -125,6 +125,16 @@ namespace Algebra {
 			return rank;
 		}
 	
+
+		template <typename T>
+		T determinant(const Decompositions::LUP_Decomposition::Lup_Decomposition<T>& decomposition) {
+			T result{ 1 };
+			for (size_t i = 0; i < decomposition.get_L().get_rows(); ++i) {
+				result = result  * decomposition.get_U()(i, i);
+			}
+
+			return result* (decomposition.get_permutations()%2 == 0 ? 1:-1);
+		}
 
 }
 }
