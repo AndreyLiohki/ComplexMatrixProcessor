@@ -18,7 +18,7 @@ namespace Decompositions {
 		private:
 			static_assert(
 				is_valid_matrix_type<T>::value,
-				"Matrix<T> requires T to be either float, double or ComplexNumber<float/double>");
+				"Matrix<T> requires T to be either float, double, long double or ComplexNumber<float/double/long double>");
 
 			Core::Matrix<T> L_;
 			Core::Matrix<T> U_;
