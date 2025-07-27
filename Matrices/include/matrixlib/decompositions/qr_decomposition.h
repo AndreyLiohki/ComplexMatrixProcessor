@@ -41,6 +41,10 @@ namespace Decompositions {
 
 
 			}
+
+			void computeHausholderMatrix(const Core::Matrix<T>& matrix) {
+
+			}
 		};
 	}
 }
