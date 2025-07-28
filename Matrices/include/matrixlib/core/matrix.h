@@ -223,6 +223,9 @@ namespace Core {
  
         T& operator()(size_t i, size_t j) { return data[i][j]; }
         const T& operator()(size_t i, size_t j) const { return data[i][j]; }
+
+        std::vector<T>& operator()(size_t i) { return data[i]; }
+        const std::vector<T>& operator()(size_t i) const { return data[i]; }
        
         
         Matrix& operator+=(const Matrix& other) {
