@@ -4,7 +4,7 @@
 
 #include "../core/matrix.h"
 
-//TODO
+
 namespace Decompositions {
 
 	namespace QR_Decomposition {
@@ -41,7 +41,7 @@ namespace Decompositions {
 
 
 			}
-
+			//TODO
 			void computeHausholderMatrix(const Core::Matrix<T>& matrix) {
 
 			}
