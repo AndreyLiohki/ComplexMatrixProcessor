@@ -226,7 +226,7 @@ namespace Core {
 
         std::vector<T>& operator()(size_t i) { return data[i]; }
         const std::vector<T>& operator()(size_t i) const { return data[i]; }
-       
+        
         
         Matrix& operator+=(const Matrix& other) {
             check_dimensions(other);
@@ -282,6 +282,29 @@ namespace Core {
                 throw std::out_of_range("matrix indeces is out of range");
             }
            std::swap(data[i], data[j]);
+        }
+
+        std::vector<T> getColumn(size_t j) {
+            if (j < 0 || j >= columns) {
+                throw std::out_of_range("number must be greater or equal to 0");
+            }
+            std::vector<T> column(rows);
+            for (size_t i = 0; i < rows; ++i) {
+                column[i] = data[i][j];
+            }
+
+            return column;
+        }
+        std::vector<T> getColumn(size_t j) const{
+            if (j < 0 || j>=columns) {
+                throw std::out_of_range("number must be greater or equal to 0");
+            }
+            std::vector<T> column(rows);
+            for (size_t i = 0; i < rows; ++i) {
+                column[i] = data[i][j];
+            }
+
+            return column;
         }
 
         auto begin() { return data.begin(); }
