@@ -80,7 +80,27 @@ namespace Decompositions {
 				return result;
 			}
 
-			std::vector<T> vector_summation(const )
+			std::vector<T> vector_summation(const std::vector<T>& vector_1, const std::vector<T>& vector_2) {
+				if (vector_1.size() != vector_2.size()) {
+					throw std::invalid_argument("incompatible vector sizes");
+				}
+				std::vector<T> result(vector_1.size());
+				for (size_t i = 0; i < vector_1.size(); ++i) {
+					result[i] = vector_1[i] + vector_2[i];
+				}
+				return result;
+			}
+
+			std::vector<T> vector_sustitution(const std::vector<T>& vector_1, const std::vector<T>& vector_2) {
+				if (vector_1.size() != vector_2.size()) {
+					throw std::invalid_argument("incompatible vector sizes");
+				}
+				std::vector<T> result(vector_1.size());
+				for (size_t i = 0; i < vector_1.size(); ++i) {
+					result[i] = vector_1[i] - vector_2[i];
+				}
+				return result;
+			}
 		};
 	}
 }
