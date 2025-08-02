@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 
 #include "../core/matrix.h"
 #include "../core/type_traits.h"
