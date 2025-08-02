@@ -1,6 +1,6 @@
-#include "pch.h"
+#include <gtest/gtest.h>
 
-#include "../MatrixLib/include/matrixlib/core/matrix.h"
+#include "../include/matrixlib/core/matrix.h"
 
 
 namespace {
