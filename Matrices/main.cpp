@@ -7,6 +7,7 @@
 #include "include/matrixlib/algebra/matrix_properties.h"
 #include "include/matrixlib/algebra/norms.h"
 #include "include/matrixlib/decompositions/lup_decomposition.h"
+#include "include/matrixlib/core/column.h"
 
 int main() {
 	Core::Matrix<double> matrix_1(2, 2);
