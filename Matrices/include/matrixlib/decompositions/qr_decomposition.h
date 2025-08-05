@@ -14,6 +14,8 @@ namespace Decompositions {
 		using Core::Traits::is_valid_matrix_type;
 		using Core::Traits::default_epsilon;
 
+		using Core::Matrix;
+		
 		template<typename T>
 		class Qr_Decomposition {
 		public:
@@ -44,6 +46,7 @@ namespace Decompositions {
 			//TODO
 			void computeHausholderMatrix(const std::vector<T>& choosed_column) {
 				T alpha = std::sqrt(compute_scalar_product(choosed_column, choosed_column));
+				T coefficient = ;
 			}
 
 			T scalar_product(const std::vector<T>& vector_1, const std::vector<T>& vector_2, bool conjugate_first = true) {
@@ -100,6 +103,17 @@ namespace Decompositions {
 					result[i] = vector_1[i] - vector_2[i];
 				}
 				return result;
+			}
+		
+			std::vector<T> multiply_vector_on_scalar(std::vector<T>& vector_1, const T& alpha){
+				for(size_t i = 0; i < vector_1.size(); ++i){
+
+				}
+			}
+
+			T compute_coefficient_k(const std::vector<T>& choosed_column, const T& alpha, const size_t position_of_1s){
+				std::vector<T> identity_vector = get_identity_vector(choosed_column.size(), position_of_1s);
+				T result = 1/(std::sqrt(compute_scalar_product(choosed_column, vector)))
 			}
 		};
 	}
