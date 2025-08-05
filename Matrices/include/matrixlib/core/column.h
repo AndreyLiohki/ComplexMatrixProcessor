@@ -38,7 +38,7 @@ namespace Core{
         }
 
         typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
-            vector_l_one_norm()const{
+            vector_l_one_norm() const{
                 using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
                 ReturnType result{};
                 for(size_t i = 0; i < column_pointer_ + size_ * stride_; ++i){
@@ -59,7 +59,7 @@ namespace Core{
 
                 return result;
         }
-        
+
     private:
         T* column_pointer_;
         size_t size_;
