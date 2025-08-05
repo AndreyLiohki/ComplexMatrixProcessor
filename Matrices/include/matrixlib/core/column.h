@@ -31,7 +31,7 @@ namespace Core{
             vector_frobenius_norm() const{
                 using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
                 ReturnType result{};
-                for(size_t i = 0; i < column_pointer_ + size_ * stride_; ++i){
+                for(size_t i = 0; i < size_; ++i){
                     result+=std::norm((*this)[i]);
                 }
                 return result;
@@ -41,7 +41,7 @@ namespace Core{
             vector_l_one_norm() const{
                 using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
                 ReturnType result{};
-                for(size_t i = 0; i < column_pointer_ + size_ * stride_; ++i){
+                for(size_t i = 0; i < size_; ++i){
                     result += std::abs((*this)[i]);
                 }
                 return result;
@@ -53,7 +53,7 @@ namespace Core{
 
                 ReturnType result{};
 
-                for(size_t i = 0; i < column_pointer_ + size_ * stride_; ++i){
+                for(size_t i = 0; i < size_; ++i){
                     result = std::max(result, std::abs((*this)[i]));
                 }
 

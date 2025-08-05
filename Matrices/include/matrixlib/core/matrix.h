@@ -5,6 +5,7 @@
 #include <complex>
 
 #include "type_traits.h"
+#include "column.h"
 
 namespace Core {
 
@@ -284,6 +285,18 @@ namespace Core {
            std::swap(data[i], data[j]);
         }
 
+        Column_View<T> get_column(size_t j){
+            if(j>=columns){
+                throw std::out_of_range("Columns index out of range");
+            }
+            return Column_View<T>(&data[0][j], rows, columns);
+        }
+        Column_View<T> get_column(size_t j) const{
+            if(j>=columns){
+                throw std::out_of_range("Columns index out of range");
+            }
+            return Column_View<T>(&data[0][j], rows, columns);
+        }
 
         auto begin() { return data.begin(); }
         auto end() { return data.end(); }

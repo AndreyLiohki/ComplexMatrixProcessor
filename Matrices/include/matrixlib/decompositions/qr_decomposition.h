@@ -3,6 +3,7 @@
 #include <complex>
 
 #include "../core/matrix.h"
+#include "../core/column.h"
 
 
 namespace Decompositions {
@@ -15,7 +16,8 @@ namespace Decompositions {
 		using Core::Traits::default_epsilon;
 
 		using Core::Matrix;
-		
+		using Core::Column_View;
+
 		template<typename T>
 		class Qr_Decomposition {
 		public:
@@ -39,82 +41,33 @@ namespace Decompositions {
 			}
 		
 			void computeDecomposition(const Core::Matrix<T>& matrix, const EpsilonType<T> epsilon = default_epsilon<T>()) {
-
+				for(size_t i = 0; i < matrix.get_columns(); ++i){
+					const Column_View<T> column = matrix.get_column(i);
+				}
+				
 
 
 			}
-			//TODO
-			void computeHausholderMatrix(const std::vector<T>& choosed_column) {
-				T alpha = std::sqrt(compute_scalar_product(choosed_column, choosed_column));
-				T coefficient = ;
-			}
-
-			T scalar_product(const std::vector<T>& vector_1, const std::vector<T>& vector_2, bool conjugate_first = true) {
-				static_assert(is_valid_matrix_type<T>::value, "Unsupported type");
-
-				if (vector_1.size() != vector_2.size()) {
-					throw std::invalid_argument("Vectors must have the same size");
+			
+			T scalar_product(const Column_View<T>& column_1, const Column_View<T>& column_2){
+				if(column_1.get_size() != column_2.get_size()){
+					throw std::invalid_argument("Columns must have same size for scalar production computation");
 				}
 
-				T result{ 0 };
-				if constexpr (is_complex<T>::value) {
-					if (conjugate_first) {
-						for (size_t i = 0; i < vector_1.size(); ++i) {
-							result += std::conj(vector_1[i]) * vector_2[i];
-						}
-					}
-					else {
-						for (size_t i = 0; i < vector_1.size(); ++i) {
-							result += vector_1[i] * vector_2[i];
-						}
+				T result{};
+
+				for(size_t i = 0; i < column_1.get_size(); ++i){
+					if constexpr(is_complex<T>::value){
+						result += column_1[i] * std::conj(column_2[i]);
+					}else{
+						result += column_1[i] * column_2[i];
 					}
 				}
-				else {
-					for (size_t i = 0; i < vector_1.size(); ++i) {
-						result += vector_1[i] * vector_2[i];
-					}
-				}
+
 				return result;
 			}
 		
-			std::vector<T> get_identity_vector(const size_t size_of_vector, const size_t position_of_1s) {
-				std::vector<T> result(size_of_vector, T{ 0 });
-				result[position_of_1s] = T{ 1 };
-				return result;
-			}
-
-			std::vector<T> vector_summation(const std::vector<T>& vector_1, const std::vector<T>& vector_2) {
-				if (vector_1.size() != vector_2.size()) {
-					throw std::invalid_argument("incompatible vector sizes");
-				}
-				std::vector<T> result(vector_1.size());
-				for (size_t i = 0; i < vector_1.size(); ++i) {
-					result[i] = vector_1[i] + vector_2[i];
-				}
-				return result;
-			}
-
-			std::vector<T> vector_sustitution(const std::vector<T>& vector_1, const std::vector<T>& vector_2) {
-				if (vector_1.size() != vector_2.size()) {
-					throw std::invalid_argument("incompatible vector sizes");
-				}
-				std::vector<T> result(vector_1.size());
-				for (size_t i = 0; i < vector_1.size(); ++i) {
-					result[i] = vector_1[i] - vector_2[i];
-				}
-				return result;
-			}
-		
-			std::vector<T> multiply_vector_on_scalar(std::vector<T>& vector_1, const T& alpha){
-				for(size_t i = 0; i < vector_1.size(); ++i){
-
-				}
-			}
-
-			T compute_coefficient_k(const std::vector<T>& choosed_column, const T& alpha, const size_t position_of_1s){
-				std::vector<T> identity_vector = get_identity_vector(choosed_column.size(), position_of_1s);
-				T result = 1/(std::sqrt(compute_scalar_product(choosed_column, vector)))
-			}
+			
 		};
 	}
 }
