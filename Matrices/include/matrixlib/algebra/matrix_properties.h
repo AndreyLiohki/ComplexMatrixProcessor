@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../core/matrix.h"
 #include "../core/type_traits.h"
 #include "../algebra/common_functions.h"

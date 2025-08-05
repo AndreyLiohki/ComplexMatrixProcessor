@@ -10,12 +10,13 @@ namespace Algebra {
 
 		using Core::Traits::is_complex;
 
-
 		template<typename T>
 		typename std::conditional_t<is_complex<T>::value, typename T::value_type,T>
 			frobenius_norm(const Core::Matrix<T>& matrix) {
 			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
+			
 			ReturnType result{};
+			
 			for (size_t i = 0; i < matrix.get_rows(); ++i) {
 				for (size_t j = 0; j < matrix.get_columns(); ++j) {
 					result += std::norm(matrix(i, j));
@@ -27,10 +28,11 @@ namespace Algebra {
 
 		template<typename T>
 		typename std::conditional_t <is_complex<T>::value, typename T::value_type, T>
-			l_one_norm_columns(const Core::Matrix<T>& matrix) {
+			inductive_l_one_norm_columns(const Core::Matrix<T>& matrix) {
 			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type,T>;			
 			
 			ReturnType result{};
+
 			for (size_t i = 0; i < matrix.get_columns(); ++i) {
 				ReturnType current_result{};
 				for (size_t j = 0; j < matrix.get_rows(); ++j) {
@@ -47,10 +49,11 @@ namespace Algebra {
 
 		template<typename T>
 		typename std::conditional_t <is_complex<T>::value, typename T::value_type, T>
-			l_one_norm_rows(const Core::Matrix<T>& matrix) {
+			inductive_l_one_norm_rows(const Core::Matrix<T>& matrix) {
 			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
 			
 			ReturnType result{};
+
 			for (size_t i = 0; i < matrix.get_rows(); ++i) {
 				ReturnType current_result{};
 				for (size_t j = 0; j < matrix.get_columns(); ++j) {
@@ -80,6 +83,24 @@ namespace Algebra {
 
 			return result;
 		}
+
+
+		template<typename T>
+		typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
+			l1_norm(const Core::Matrix<T>& matrix) {
+			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
+		
+			ReturnType result{};
+
+			for (size_t i = 0; i < matrix.get_rows(); ++i) {
+				for (size_t j = 0; j < matrix.get_columns(); ++j) {
+					result += std::abs(matrix(i,j));
+				}
+			}
+
+			return result;
+		};
+	
 	}
 
 }
