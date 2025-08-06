@@ -66,7 +66,11 @@ namespace Decompositions {
 
 				return result;
 			}
-		
+			
+			Column_View<T> compute_hausholder_vector(const Column_View<T>& column){
+				T alpha = std::sqrt(scalar_product(column, column));
+				Column_View<T> omega
+			}
 			
 		};
 	}
