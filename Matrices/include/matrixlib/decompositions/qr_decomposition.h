@@ -67,9 +67,18 @@ namespace Decompositions {
 				return result;
 			}
 			
-			Column_View<T> compute_hausholder_vector(const Column_View<T>& column){
-				T alpha = std::sqrt(scalar_product(column, column));
-				Column_View<T> omega
+			T compute_k(const Column_View<T>& current_column){
+
+			}
+
+			T compute_alpha(const Column_View<T>& current_column){
+				return std::sqrt(scalar_product(current_column, current_column));
+			}
+
+			Matrix<T> compute_omega(const Column_View<T>& column){
+				Matrix<T>  omega(column.get_size(), 1);
+
+				T norm = 
 			}
 			
 		};

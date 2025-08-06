@@ -334,6 +334,8 @@ namespace Core {
             }
         }
     
-
+        //TODO: оптимизировать умножение
+        Matrix<T> multiply_classic(const Matrix& other) const{}
+        Matrix<T> multiply_blocked(const Matrix& other, size_t block_size = 32) const{}
     };
 }
