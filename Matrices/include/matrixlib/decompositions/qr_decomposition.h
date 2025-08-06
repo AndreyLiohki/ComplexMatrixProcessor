@@ -42,9 +42,9 @@ namespace Decompositions {
 			}
 		
 			void computeDecomposition(const Core::Matrix<T>& matrix, const EpsilonType<T> epsilon = default_epsilon<T>()) {
-				for(size_t i = 0; i < matrix.get_columns(); ++i){
+				for(size_t k = 0; k < matrix.get_columns(); ++k){
 
-					const Column_View<T> s = matrix.get_column(i).subview(i);
+					const Column_View<T> s = R_.get_column(k).subview(k);
 
 					T alpha = std::copysign(compute_norm(s), s[0]);
 
@@ -58,6 +58,10 @@ namespace Decompositions {
 					if(omega_norm < epsilon) continue;
 					for(size_t i = 0; i < omega.size(); ++i){
 						omega[i] /= omega_norm;
+					}
+
+					for(size_t j = k; j < R_.get_columns(); ++j){
+						Column_View<T> current_column = R_.get_column(j).subview(k);
 					}
 
 				}
