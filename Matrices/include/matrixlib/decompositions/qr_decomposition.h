@@ -1,6 +1,7 @@
 #pragma once
 
 #include <complex>
+#include <numeric>
 
 #include "../core/matrix.h"
 #include "../core/column.h"
@@ -49,36 +50,19 @@ namespace Decompositions {
 
 			}
 			
-			T scalar_product(const Column_View<T>& column_1, const Column_View<T>& column_2){
-				if(column_1.get_size() != column_2.get_size()){
-					throw std::invalid_argument("Columns must have same size for scalar production computation");
-				}
+			T compute_norm(const Column_View<T>& column) const {
+                return std::sqrt(std::inner_product(column.begin(), column.end(), column.begin(), T(0)));
+            }
 
-				T result{};
+            T compute_norm(const std::vector<T>& vector) const {
+                return std::sqrt(std::inner_product(vector.begin(), vector.end(), vector.begin(), T(0)));
+            }
 
-				for(size_t i = 0; i < column_1.get_size(); ++i){
-					if constexpr(is_complex<T>::value){
-						result += column_1[i] * std::conj(column_2[i]);
-					}else{
-						result += column_1[i] * column_2[i];
-					}
-				}
+
+			Column_View<T> get_vector_s(const Column_View<T>& column, const size_t column_number, const size_t position){
+				Column_View<T> result = R_.get_column(column_number).subview(position);
 
 				return result;
-			}
-			
-			T compute_k(const Column_View<T>& current_column){
-
-			}
-
-			T compute_alpha(const Column_View<T>& current_column){
-				return std::sqrt(scalar_product(current_column, current_column));
-			}
-
-			Matrix<T> compute_omega(const Column_View<T>& column){
-				Matrix<T>  omega(column.get_size(), 1);
-
-				T norm = 
 			}
 			
 		};
