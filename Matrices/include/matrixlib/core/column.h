@@ -28,17 +28,17 @@ namespace Core{
         size_t get_size() const{ return size_;}
 
         typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
-            vector_frobenius_norm() const{
+            vector_l2_norm() const{
                 using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
                 ReturnType result{};
                 for(size_t i = 0; i < size_; ++i){
                     result+=std::norm((*this)[i]);
                 }
-                return result;
+                return std::sqrt(result);
         }
 
         typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
-            vector_l_one_norm() const{
+            vector_l1_norm() const{
                 using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
                 ReturnType result{};
                 for(size_t i = 0; i < size_; ++i){
@@ -60,6 +60,13 @@ namespace Core{
                 return result;
         }
 
+        Column_View<T> subview(const size_t start_at){
+            if(start_at >= size_){
+                throw std::invalid_argument("Start index is out of range");
+            }
+
+            return Column_View<T>(column_pointer_ + start_at * stride_, size_ - start_at, stride_);
+        }
     private:
         T* column_pointer_;
         size_t size_;
