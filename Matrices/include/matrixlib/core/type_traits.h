@@ -47,5 +47,21 @@ namespace Core {
             }
         }
 
+        template<typename T, bool = is_complex<T>::value>
+        struct norm_type_impl;
+
+        template<typename T>
+        struct norm_type_impl<T, true>{
+            using type = typename T::value_type;
+        };
+
+        template<typename T>
+        struct norm_type_impl<T, false>{
+            using type = T;
+        };
+
+        template<typename T>
+        using NormType = typename norm_type_impl<T>::type;
+
     } 
 }

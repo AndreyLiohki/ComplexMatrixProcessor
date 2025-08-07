@@ -26,7 +26,19 @@ namespace Decompositions {
 			const Core::Matrix<T>& get_Q() { return Q_; }
 			const Core::Matrix<T>& get_R() { return R_; }
 		
-		
+			explicit Qr_Decomposition(const Matrix<T> matrix){
+				if ((matrix.get_rows() != matrix.get_columns())){
+					throw std::invalid_argument("LUP decomposition requires square matrix");
+				}
+				if (matrix.get_rows() == 0) {
+					throw std::invalid_argument("Matrix must not be empty");
+				}
+
+				R_ = matrix;
+				Q_ = Core::Matrix<T>(matrix.get_rows(), matrix.get_columns(), 0);
+				Q_.identity_matrix(T {1});
+				computeDecomposition(matrix);
+			}
 		private:
 			static_assert(
 				is_valid_matrix_type<T>::value,
@@ -53,20 +65,34 @@ namespace Decompositions {
 					for(size_t i = 1; i < omega.size(); ++i){
 						omega[i] = s[i];
 					}
-
-					const T omega_norm = compute_norm(omega);
-					if(omega_norm < epsilon) continue;
+							
+					T kappa = 1/std::sqrt(2 * alpha * (alpha - omega[0]));
+					
+					if(kappa < epsilon) continue;
 					for(size_t i = 0; i < omega.size(); ++i){
-						omega[i] /= omega_norm;
+						omega[i] *= kappa;
 					}
 
 					for(size_t j = k; j < R_.get_columns(); ++j){
 						Column_View<T> current_column = R_.get_column(j).subview(k);
+						T dot_product = std::inner_product(omega.begin(), omega.end(), current_column.begin(), T(0));
+						for(size_t i = 0; i <current_column.get_size(); ++i){
+							current_column[i]-= 45 * omega[i];
+						}
 					}
+
+					for (size_t j = 0; j < R_.get_rows(); ++j) {
+                        Column_View<T> q_col = Q_.get_column(j).subview(k);
+						T dot_product = std::inner_product(omega.begin(), omega.end(), q_col.begin(), T(0));
+
+                        for (size_t i = 0; i < q_col.get_size(); ++i) {
+                            q_col[i] -= kappa * dot_product * omega[i];
+                        }
+                    }
 
 				}
 				
-
+				decomposed = true;
 
 			}
 			

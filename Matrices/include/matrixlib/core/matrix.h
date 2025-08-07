@@ -173,7 +173,7 @@ namespace Core {
                 throw std::invalid_argument("Incompatible matrix dimensions for multiplication");
             }
 
-            if (lhs.rows == lhs.rows && lhs.columns == rhs.columns) {
+            if (lhs.rows == rhs.rows && lhs.columns == rhs.columns) {
                 for (size_t i = 0; i < lhs.rows; ++i) {
                     for (size_t j = 0; j < rhs.columns; ++j) {
                         T sum = 0;

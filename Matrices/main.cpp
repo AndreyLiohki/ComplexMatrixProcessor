@@ -7,6 +7,7 @@
 #include "include/matrixlib/algebra/matrix_properties.h"
 #include "include/matrixlib/algebra/norms.h"
 #include "include/matrixlib/decompositions/lup_decomposition.h"
+#include "include/matrixlib/decompositions/qr_decomposition.h"
 #include "include/matrixlib/core/column.h"
 
 int main() {
@@ -37,6 +38,12 @@ int main() {
 	std::cout << std::endl;
 
 	std::cout << Algebra::Operations::determinant(obj);
+
+	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_2);
+	std::cout << obj_2.get_Q() * Algebra::Operations::transpose(obj_2.get_Q());
+	std::cout << std::endl;
+
+	std::cout << obj_2.get_R();
 
 
 }

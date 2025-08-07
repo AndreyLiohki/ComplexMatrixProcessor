@@ -24,40 +24,39 @@ namespace Core{
 
         T* begin(){ return column_pointer_; } 
         T* end(){ return column_pointer_ + size_ * stride_; }
-
+        const T* begin() const { return column_pointer_; }
+        const T* end() const { return column_pointer_ + size_ * stride_; }
+        
         size_t get_size() const{ return size_;}
 
-        typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
-            vector_l2_norm() const{
-                using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
-                ReturnType result{};
-                for(size_t i = 0; i < size_; ++i){
-                    result+=std::norm((*this)[i]);
+        Traits::NormType<T> vector_l2_norm() const {
+            Traits::NormType<T> result{};
+            for (size_t i = 0; i < size_; ++i) {
+                if constexpr (Traits::is_complex<T>::value) {
+                    result += std::norm((*this)[i]);
+                } else {
+                    result += (*this)[i] * (*this)[i];
                 }
-                return std::sqrt(result);
+            }
+            return std::sqrt(result);
         }
 
-        typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
-            vector_l1_norm() const{
-                using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
-                ReturnType result{};
-                for(size_t i = 0; i < size_; ++i){
-                    result += std::abs((*this)[i]);
-                }
-                return result;
+        Traits::NormType<T> vector_l1_norm() const {
+            Traits::NormType<T> result{};
+            for (size_t i = 0; i < size_; ++i) {
+                result += std::abs((*this)[i]);
+            }
+            return result;
         }
 
-        typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
-            vector_max_norm() const{
-                using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
-
-                ReturnType result{};
-
-                for(size_t i = 0; i < size_; ++i){
-                    result = std::max(result, std::abs((*this)[i]));
-                }
-
-                return result;
+        Traits::NormType<T> vector_max_norm() const {
+            if (size_ == 0) return Traits::NormType<T>{};
+            
+            auto current_max = std::abs((*this)[0]);
+            for (size_t i = 1; i < size_; ++i) {
+                current_max = std::max(current_max, std::abs((*this)[i]));
+            }
+            return current_max;
         }
 
         Column_View<T> subview(const size_t start_at){
@@ -67,7 +66,12 @@ namespace Core{
 
             return Column_View<T>(column_pointer_ + start_at * stride_, size_ - start_at, stride_);
         }
+    
     private:
+
+        static_assert(
+			is_valid_matrix_type<T>::value,
+			"Matrix<T> requires T to be either float, double or ComplexNumber<float/double>");
         T* column_pointer_;
         size_t size_;
         size_t stride_;
