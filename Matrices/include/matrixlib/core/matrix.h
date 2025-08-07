@@ -36,6 +36,30 @@ namespace Core {
         {
             check_rectangular();
         }
+        explicit Matrix(const std::vector<T>& data_, bool is_column = false) 
+            : rows(is_column ? data_.size() : 1),
+              columns(is_column ? 1 : data_.size())
+        {
+            if (data_.empty()) {
+                rows = columns = 0;
+                return;
+            }
+
+            data.resize(rows);
+            for (auto& row : data) {
+                row.resize(columns);
+            }
+
+            if (is_column) {
+                for (size_t i = 0; i < rows; ++i) {
+                    data[i][0] = data_[i];
+                }
+            } else {
+                for (size_t j = 0; j < columns; ++j) {
+                    data[0][j] = data_[j];
+                }
+            }
+        }
         
         
         Matrix(const Matrix& other) = default;

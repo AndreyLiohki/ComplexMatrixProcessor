@@ -38,12 +38,21 @@ int main() {
 	std::cout << std::endl;
 
 	std::cout << Algebra::Operations::determinant(obj);
-
-	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_2);
-	std::cout << obj_2.get_Q() * Algebra::Operations::transpose(obj_2.get_Q());
 	std::cout << std::endl;
 
-	std::cout << obj_2.get_R();
+	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_1);
+	std::cout << obj_2.get_Q() * Algebra::Operations::transpose(obj_2.get_Q());
+	std::cout << std::endl;
+	std::cout << obj_2.get_Q();
+
+	//std::cout <<  Algebra::Operations::transpose(obj_2.get_Q()) * obj_2.get_Q() ;
+	//std::cout << std::endl;
+
+	//std::cout << obj_2.get_R();
+	//std::cout << std::endl;
+	//std::cout << std::endl;
+	//std::cout << obj_2.get_Q() * obj_2.get_R();
+
 
 
 }

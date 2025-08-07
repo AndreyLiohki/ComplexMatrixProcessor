@@ -13,7 +13,11 @@ namespace Core{
     class Column_View{
     public:
         Column_View(T* column_pointer, size_t size, size_t stride = 1)
-            :column_pointer_(column_pointer), size_(size), stride_(stride){}
+            :column_pointer_(column_pointer), size_(size), stride_(stride){
+                if (column_pointer_ == nullptr) {
+            throw std::invalid_argument("Column pointer cannot be null");
+            }
+        }
 
         T& operator[](size_t i){
             return column_pointer_[i*stride_];
@@ -26,7 +30,10 @@ namespace Core{
         T* end(){ return column_pointer_ + size_ * stride_; }
         const T* begin() const { return column_pointer_; }
         const T* end() const { return column_pointer_ + size_ * stride_; }
-        
+
+        Column_View(const Column_View&) = default;
+        Column_View& operator=(const Column_View&) = default;
+
         size_t get_size() const{ return size_;}
 
         Traits::NormType<T> vector_l2_norm() const {
