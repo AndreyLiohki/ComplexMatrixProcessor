@@ -41,7 +41,7 @@ int main() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
-	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_2);
+	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_1);
 
 	std::cout << std::endl;
 	std::cout << std::endl;

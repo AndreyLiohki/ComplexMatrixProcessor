@@ -105,9 +105,6 @@ namespace Decompositions {
 					Q_ = Q_ * hausholder_matrix;
 				}
 			}
-			
-
-			
 		};
 	}
 }
