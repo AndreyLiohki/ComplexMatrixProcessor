@@ -8,7 +8,6 @@
 #include "include/matrixlib/algebra/norms.h"
 #include "include/matrixlib/decompositions/lup_decomposition.h"
 #include "include/matrixlib/decompositions/qr_decomposition.h"
-#include "include/matrixlib/core/column.h"
 
 int main() {
 	Core::Matrix<double> matrix_1(2, 2);
@@ -39,20 +38,20 @@ int main() {
 
 	std::cout << Algebra::Operations::determinant(obj);
 	std::cout << std::endl;
-
-	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_1);
-	std::cout << obj_2.get_Q() * Algebra::Operations::transpose(obj_2.get_Q());
 	std::cout << std::endl;
-	std::cout << obj_2.get_Q();
+	std::cout << std::endl;
+	std::cout << std::endl;
+	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_2);
 
-	//std::cout <<  Algebra::Operations::transpose(obj_2.get_Q()) * obj_2.get_Q() ;
-	//std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << obj_2.get_Q() << std::endl;
+	std::cout << obj_2.get_R() << std::endl;
 
-	//std::cout << obj_2.get_R();
-	//std::cout << std::endl;
-	//std::cout << std::endl;
-	//std::cout << obj_2.get_Q() * obj_2.get_R();
-
+	std::cout << obj_2.get_Q() * obj_2.get_R() << std::endl;
+	std::cout << obj_2.get_Q() * Algebra::Operations::transpose(obj_2.get_Q()) << std::endl;
 
 
 }

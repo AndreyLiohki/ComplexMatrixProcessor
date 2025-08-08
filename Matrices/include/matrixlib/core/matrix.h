@@ -5,11 +5,10 @@
 #include <complex>
 
 #include "type_traits.h"
-#include "column.h"
 
 namespace Core {
 
-    using Core::Traits::is_valid_matrix_type;
+    using Traits::is_valid_matrix_type;
 
 	template<typename T>
 	class Matrix {
@@ -307,19 +306,6 @@ namespace Core {
                 throw std::out_of_range("matrix indeces is out of range");
             }
            std::swap(data[i], data[j]);
-        }
-
-        Column_View<T> get_column(size_t j){
-            if(j>=columns){
-                throw std::out_of_range("Columns index out of range");
-            }
-            return Column_View<T>(&data[0][j], rows, columns);
-        }
-        Column_View<T> get_column(size_t j) const{
-            if(j>=columns){
-                throw std::out_of_range("Columns index out of range");
-            }
-            return Column_View<T>(&data[0][j], rows, columns);
         }
 
         auto begin() { return data.begin(); }

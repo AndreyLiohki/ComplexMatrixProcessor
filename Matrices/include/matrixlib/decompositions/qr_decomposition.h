@@ -4,7 +4,6 @@
 #include <numeric>
 
 #include "../core/matrix.h"
-#include "../core/column.h"
 #include "../algebra/matrix_operations.h"
 
 
@@ -18,7 +17,6 @@ namespace Decompositions {
 		using Core::Traits::default_epsilon;
 
 		using Core::Matrix;
-		using Core::Column_View;
 
 		using namespace Algebra::Operations;
 
@@ -40,79 +38,74 @@ namespace Decompositions {
 				R_ = matrix;
 				Q_ = Core::Matrix<T>(matrix.get_rows(), matrix.get_columns(), 0);
 				Q_.identity_matrix(T {1});
-				computeDecomposition(matrix);
+				compute_decomposition(matrix);
 			}
 		private:
 			static_assert(
 				is_valid_matrix_type<T>::value,
 				"Matrix<T> requires T to be either float, double, long double or ComplexNumber<float/double/long double>");
 
-			Core::Matrix<T>Q_;
-			Core::Matrix<T>R_;
+			Matrix<T>Q_;
+			Matrix<T>R_;
 
 			bool decomposed = false;
 
 			bool is_decomposed() {
 				return decomposed;
 			}
-		
-			void computeDecomposition(const Core::Matrix<T>& matrix, const EpsilonType<T> epsilon = default_epsilon<T>()) {
+			
+			void compute_decomposition(const Matrix<T>& matrix, const EpsilonType<T> epsilon = default_epsilon<T>()){
 				Matrix<T> identity(matrix.get_rows(), matrix.get_columns(), 0);
-				identity.identity_matrix(T {1});
-				
-				for(size_t k = 0; k < matrix.get_columns(); ++k){
-					Column_View<T> current_column = R_.get_column(k).subview(k);
+				identity.identity_matrix(1);
 
-					T alpha = current_column.vector_l2_norm();
+				const size_t n = matrix.get_rows();
+				const size_t m = matrix.get_columns();
+
+				for(size_t k = 0; k < m; ++k){
+
+					// berechnen alpha
+					T alpha{0};
+					for(size_t i = k; i < n; ++i){
+						alpha+= matrix(i, k) * matrix(i,k);
+					}
+					alpha = std::sqrt(alpha);
 					if(std::abs(alpha) < epsilon) continue;
-					if (current_column[0] > 0) alpha = -alpha;
-					
-					std::vector<T> intermediate_vector(current_column.get_size(), 0);
+					if(matrix(k,k) > 0) alpha = -alpha;
+
+					//berechnen s-ae
+					std::vector<T> intermediate_vector(m-k);
 					for(size_t i = 0; i < intermediate_vector.size(); ++i){
 						if(i == 0){
-							intermediate_vector[i] = current_column[i] - alpha;
+							intermediate_vector[i] = matrix(i+k, k) - alpha;
 						}else{
-							intermediate_vector[i] = current_column[i];
-						}
+							intermediate_vector[i] = matrix(i+k, k);
+						}	
 					}
 
-					T coefficient = compute_k(current_column, intermediate_vector);
+					//berechnen k
+					T coefficient{0};
+					for(size_t i = k; i < n; ++i){
+						coefficient += matrix(i,k) * intermediate_vector[i-k];
+					}
+					coefficient = 1/std::sqrt(2*coefficient);
 
-					std::vector<T> omega(R_.get_columns(), 0);
-					for(size_t i = k; i < omega.size(); ++i){
-						omega[i] = coefficient * intermediate_vector[i];
+					//berechnen omega
+					std::vector<T> omega(n, 0);
+					for(size_t i = k; i<n;++i){
+						omega[i] = coefficient * intermediate_vector[i-k];
 					}
 
-					Matrix<T> Vn(omega);
-					Vn = transpose(Vn) * Vn;
-					Matrix<T> hausholder_matrix = identity - 2 * Vn;
+					//berechnen die Matrix von Haußholder
+					Matrix<T> Vn(omega, true);
+					Matrix<T> hausholder_matrix = identity - 2 * Vn * transpose(Vn);
 
-					R_ = hausholder_matrix *R_;
-					std::cout << R_ << std::endl;
-					
-					Q_ = Q_* hausholder_matrix;
-					std::cout << Q_ << std::endl;
+
+					//Transformationen durchführen
+					R_ = hausholder_matrix * R_;
+					Q_ = Q_ * hausholder_matrix;
 				}
-				
-				decomposed = true;
-
 			}
-
-			T compute_k(const Column_View<T>& column, const std::vector<T>& intermediate_column){
-				if(column.get_size() != intermediate_column.size()){
-					throw std::invalid_argument("wrong operand sizes");
-				}
-
-				T result{0};
-
-				for(size_t i = 0; i < column.get_size(); ++i){
-					result +=column[i]*intermediate_column[i];
-				}
-
-				result = 2 * result;
-
-				return 1/std::sqrt(result);
-			}
+			
 
 			
 		};
