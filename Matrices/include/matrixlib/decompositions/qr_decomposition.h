@@ -97,7 +97,12 @@ namespace Decompositions {
 
 					//berechnen die Matrix von Haußholder
 					Matrix<T> Vn(omega, true);
-					Matrix<T> hausholder_matrix = identity - 2 * Vn * transpose(Vn);
+					Matrix<T> hausholder_matrix;
+					if constexpr(is_complex<T>::value){
+						hausholder_matrix = identity - 2 * Vn * transpose(Algebra::Operations::hermitian_matrix(Vn));
+					}else{
+						hausholder_matrix = identity - 2 * Vn * transpose(Vn);
+					}
 
 
 					//Transformationen durchführen
