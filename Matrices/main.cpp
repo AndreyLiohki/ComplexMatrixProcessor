@@ -8,6 +8,7 @@
 #include "include/matrixlib/algebra/norms.h"
 #include "include/matrixlib/decompositions/lup_decomposition.h"
 #include "include/matrixlib/decompositions/qr_decomposition.h"
+#include "include/matrixlib/algebra/numerical_characteristics.h"
 
 int main() {
 	Core::Matrix<double> matrix_1(2, 2);
@@ -36,7 +37,7 @@ int main() {
 	std::cout << obj.get_P();
 	std::cout << std::endl;
 
-	std::cout << Algebra::Operations::determinant(obj);
+	std::cout << Algebra::Characteristics::determinant(obj);
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;

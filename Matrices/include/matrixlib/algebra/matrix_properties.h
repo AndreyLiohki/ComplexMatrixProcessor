@@ -2,7 +2,6 @@
 
 #include "../core/matrix.h"
 #include "../core/type_traits.h"
-#include "../algebra/common_functions.h"
 #include "../algebra/matrix_operations.h"
 
 namespace Algebra {
