@@ -24,10 +24,24 @@ namespace Decompositions {
 		class Qr_Decomposition {
 		public:
 
-			const Core::Matrix<T>& get_Q() { return Q_; }
-			const Core::Matrix<T>& get_R() { return R_; }
+			const Core::Matrix<T>& get_Q() const{ return Q_; }
+			const Core::Matrix<T>& get_R() const{ return R_; }
 		
 			explicit Qr_Decomposition(const Matrix<T> matrix){
+				if ((matrix.get_rows() != matrix.get_columns())){
+					throw std::invalid_argument("LUP decomposition requires square matrix");
+				}
+				if (matrix.get_rows() == 0) {
+					throw std::invalid_argument("Matrix must not be empty");
+				}
+
+				R_ = matrix;
+				Q_ = Core::Matrix<T>(matrix.get_rows(), matrix.get_columns(), 0);
+				Q_.identity_matrix(T {1});
+				compute_decomposition(matrix);
+			}
+		
+			void recompute_decomposition(const Matrix<T> matrix){
 				if ((matrix.get_rows() != matrix.get_columns())){
 					throw std::invalid_argument("LUP decomposition requires square matrix");
 				}

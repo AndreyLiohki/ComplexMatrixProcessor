@@ -18,10 +18,10 @@ int main() {
 	matrix_1(1, 0) = 9;
 	matrix_1(1, 1) = 6;
 
-	matrix_2(0, 0) = 3;
-	matrix_2(0, 1) = 5;
-	matrix_2(1, 0) = 1;
-	matrix_2(1, 1) = 3;
+	matrix_2(0, 0) = -4;
+	matrix_2(0, 1) = 6;
+	matrix_2(1, 0) = -3;
+	matrix_2(1, 1) = 5;
 
 	auto result = (matrix_1 + matrix_2);
 	auto result_2 = (matrix_1 * matrix_2);
@@ -42,17 +42,13 @@ int main() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
-	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_1);
+	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_2);
 
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << obj_2.get_Q() << std::endl;
-	std::cout << obj_2.get_R() << std::endl;
+	std::vector<double> result_4= Algebra::Characteristics::eigen_values(obj_2, 100);
 
-	std::cout << obj_2.get_Q() * obj_2.get_R() << std::endl;
-	std::cout << obj_2.get_Q() * Algebra::Operations::transpose(obj_2.get_Q()) << std::endl;
+	for(size_t i = 0; i < result_4.size(); ++i){
+		std::cout << result_4[i] << std::endl;
+	}
 
 
 }

@@ -90,8 +90,19 @@ namespace Algebra {
 	
 
 		template<typename T>
-		std::vector<T> eigen_values(const Decompositions::QR_Decomposition::Qr_Decomposition<T>& value){
-			
+		std::vector<T> eigen_values(Decompositions::QR_Decomposition::Qr_Decomposition<T> value, const size_t amount_of_iterations){
+			Core::Matrix<T> result;
+			std::vector<T> answer;
+			for(size_t i = 0; i < amount_of_iterations; ++i){
+				result = value.get_R() * value.get_Q();
+				value.recompute_decomposition(result);
+			}
+
+			for(size_t i = 0; i < result.get_columns(); ++i){
+				answer.push_back(result(i,i));
+			}
+
+			return answer;
 		}
 	}
 }
