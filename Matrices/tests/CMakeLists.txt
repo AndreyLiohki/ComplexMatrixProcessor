@@ -13,6 +13,7 @@ set(TEST_SOURCES
     matrix_tests/iterator_methods_test.cpp
     matrix_tests/matrix_functions_test.cpp
     properties_test/matrix_properties_test.cpp
+    operations_test/matrix_operations_test.cpp
 )
 
 add_executable(test_runner ${TEST_SOURCES})
