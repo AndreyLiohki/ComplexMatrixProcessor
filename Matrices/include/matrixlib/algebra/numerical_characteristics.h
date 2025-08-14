@@ -28,8 +28,7 @@ namespace Algebra {
 		
 		
 		template<typename T>
-		long rank(const Core::Matrix<T>& matrix, typename std::conditional_t<is_complex<T>::value,
-			typename T::value_type, T> epsilon) {
+		long rank(const Core::Matrix<T>& matrix, EpsilonType<T> epsilon) {
 
 			if (matrix.get_rows() == 0 || matrix.get_columns() == 0) {
 				return 0;
@@ -104,5 +103,6 @@ namespace Algebra {
 
 			return answer;
 		}
+	
 	}
 }

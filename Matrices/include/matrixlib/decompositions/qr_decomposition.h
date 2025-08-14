@@ -70,7 +70,7 @@ namespace Decompositions {
 			
 			void compute_decomposition(const Matrix<T>& matrix, const EpsilonType<T> epsilon = default_epsilon<T>()){
 				Matrix<T> identity(matrix.get_rows(), matrix.get_columns(), 0);
-				identity.identity_matrix(1);
+				identity.identity_matrix(T{1});
 
 				const size_t n = matrix.get_rows();
 				const size_t m = matrix.get_columns();
@@ -79,12 +79,25 @@ namespace Decompositions {
 
 					// berechnen alpha
 					T alpha{0};
+					
 					for(size_t i = k; i < n; ++i){
-						alpha+= matrix(i, k) * matrix(i,k);
+						alpha += std::norm(matrix(i, k));
 					}
+					
 					alpha = std::sqrt(alpha);
 					if(std::abs(alpha) < epsilon) continue;
-					if(matrix(k,k) > 0) alpha = -alpha;
+					
+					if constexpr (is_complex<T>::value) {
+    					T a_kk = matrix(k,k);
+    					if (std::abs(a_kk) > epsilon) {
+        					T phase = a_kk / std::abs(a_kk);
+        					alpha = -phase * T(alpha);
+    					} else {
+        					alpha = -T{alpha};
+    					}
+					} else {
+    					if(matrix(k,k) > epsilon) alpha = -alpha;
+					}
 
 					//berechnen s-ae
 					std::vector<T> intermediate_vector(m-k);
@@ -101,7 +114,7 @@ namespace Decompositions {
 					for(size_t i = k; i < n; ++i){
 						coefficient += matrix(i,k) * intermediate_vector[i-k];
 					}
-					coefficient = 1/std::sqrt(2*coefficient);
+					coefficient = T{1}/std::sqrt(T{2}*coefficient);
 
 					//berechnen omega
 					std::vector<T> omega(n, 0);
@@ -110,10 +123,10 @@ namespace Decompositions {
 					}
 
 					//berechnen die Matrix von Haußholder
-					Matrix<T> Vn(omega, true);
+					Matrix<T> Vn(omega,true);
 					Matrix<T> hausholder_matrix;
 					if constexpr(is_complex<T>::value){
-						hausholder_matrix = identity - 2 * Vn * transpose(Algebra::Operations::hermitian_matrix(Vn));
+						hausholder_matrix = identity - 2 * Vn * (Algebra::Operations::hermitian_matrix(Vn));
 					}else{
 						hausholder_matrix = identity - 2 * Vn * transpose(Vn);
 					}

@@ -13,6 +13,7 @@
 int main() {
 	Core::Matrix<double> matrix_1(2, 2);
 	Core::Matrix<double> matrix_2(2, 2);
+	Core::Matrix<std::complex<double>> matrix_3(2, 2);
 	matrix_1(0, 0) = 2;
 	matrix_1(0, 1) = 3;
 	matrix_1(1, 0) = 9;
@@ -22,6 +23,11 @@ int main() {
 	matrix_2(0, 1) = 6;
 	matrix_2(1, 0) = -3;
 	matrix_2(1, 1) = 5;
+
+	matrix_3(0,0) = {0.0, -1.0}; 
+	matrix_3(0,1) = {0.0, 0.0};
+    matrix_3(1,0) = {0.0, 0.0}; 
+	matrix_3(1,1) = {0.0, 1.0};
 
 	auto result = (matrix_1 + matrix_2);
 	auto result_2 = (matrix_1 * matrix_2);
@@ -42,9 +48,9 @@ int main() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
-	Decompositions::QR_Decomposition::Qr_Decomposition<double> obj_2(matrix_2);
+	Decompositions::QR_Decomposition::Qr_Decomposition<std::complex<double>> obj_2(matrix_3);
 
-	std::vector<double> result_4= Algebra::Characteristics::eigen_values(obj_2, 100);
+	std::vector<std::complex<double>> result_4= Algebra::Characteristics::eigen_values(obj_2, 100);
 
 	for(size_t i = 0; i < result_4.size(); ++i){
 		std::cout << result_4[i] << std::endl;

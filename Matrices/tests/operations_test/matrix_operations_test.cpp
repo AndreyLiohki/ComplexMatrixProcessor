@@ -2,8 +2,7 @@
 
 #include <complex>
 
-#include "../include/matrixlib/algebra/matrix_operations.h"
-
+#include "../../include/matrixlib/algebra/matrix_operations.h"
 
 using namespace Core;
 using namespace Algebra::Operations;
