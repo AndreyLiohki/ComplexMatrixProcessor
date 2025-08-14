@@ -298,7 +298,7 @@ namespace Core {
                 }
             }
         }
-        bool is_square() {
+        bool is_square() const noexcept{
             return rows == columns;
         }
         void swap_rows(const size_t i, const size_t j) {
@@ -307,6 +307,7 @@ namespace Core {
             }
            std::swap(data[i], data[j]);
         }
+
 
         auto begin() { return data.begin(); }
         auto end() { return data.end(); }
