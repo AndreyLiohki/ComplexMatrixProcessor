@@ -47,5 +47,19 @@ namespace Core {
             }
         }
 
-    } 
+
+        template<typename T>
+        struct norm_value_type {
+            using type = T;
+        };
+
+        template<typename T>
+        struct norm_value_type<std::complex<T>> {
+           using type = T;
+        };
+
+        template<typename T>
+        using norm_value_type_t = typename norm_value_type<T>::type;
+
+        }
 }

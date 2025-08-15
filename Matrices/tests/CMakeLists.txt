@@ -15,6 +15,7 @@ set(TEST_SOURCES
     properties_test/matrix_properties_test.cpp
     operations_test/matrix_operations_test.cpp
     numerical_characteristics/matrix_numerical_characteristics.cpp
+    norms/test_matrix_norms.cpp
 )
 
 add_executable(test_runner ${TEST_SOURCES})

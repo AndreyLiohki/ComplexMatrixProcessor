@@ -11,9 +11,9 @@ namespace Algebra {
 		using Core::Traits::is_complex;
 
 		template<typename T>
-		typename std::conditional_t<is_complex<T>::value, typename T::value_type,T>
+		Core::Traits::EpsilonType<T>
 			frobenius_norm(const Core::Matrix<T>& matrix) {
-			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
+			using ReturnType = Core::Traits::EpsilonType<T>;
 			
 			ReturnType result{};
 			
@@ -27,9 +27,9 @@ namespace Algebra {
 
 
 		template<typename T>
-		typename std::conditional_t <is_complex<T>::value, typename T::value_type, T>
+		Core::Traits::EpsilonType<T>			
 			inductive_l_one_norm_columns(const Core::Matrix<T>& matrix) {
-			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type,T>;			
+			using ReturnType = Core::Traits::EpsilonType<T>;			
 			
 			ReturnType result{};
 
@@ -48,9 +48,9 @@ namespace Algebra {
 
 
 		template<typename T>
-		typename std::conditional_t <is_complex<T>::value, typename T::value_type, T>
+		Core::Traits::EpsilonType<T>			
 			inductive_l_one_norm_rows(const Core::Matrix<T>& matrix) {
-			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
+			using ReturnType = Core::Traits::EpsilonType<T>;
 			
 			ReturnType result{};
 
@@ -69,9 +69,9 @@ namespace Algebra {
 
 
 		template<typename T>
-		typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
+		Core::Traits::EpsilonType<T>			
 			max_norm(const Core::Matrix<T>& matrix) {
-			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
+			using ReturnType = Core::Traits::EpsilonType<T>;
 		
 			ReturnType result{};
 
@@ -86,9 +86,9 @@ namespace Algebra {
 
 
 		template<typename T>
-		typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>
+		Core::Traits::EpsilonType<T>			
 			l1_norm(const Core::Matrix<T>& matrix) {
-			using ReturnType = typename std::conditional_t<is_complex<T>::value, typename T::value_type, T>;
+			using ReturnType = Core::Traits::EpsilonType<T>;
 		
 			ReturnType result{};
 
