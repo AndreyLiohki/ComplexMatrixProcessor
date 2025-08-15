@@ -47,7 +47,6 @@ namespace Core {
             }
         }
 
-
         template<typename T>
         struct norm_value_type {
             using type = T;
@@ -59,7 +58,7 @@ namespace Core {
         };
 
         template<typename T>
-        using norm_value_type_t = typename norm_value_type<T>::type;
+        using NormType = typename norm_value_type<T>::type;
 
         }
 }

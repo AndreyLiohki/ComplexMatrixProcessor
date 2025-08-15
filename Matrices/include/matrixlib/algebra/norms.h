@@ -11,7 +11,7 @@ namespace Algebra {
 		using Core::Traits::is_complex;
 
 		template<typename T>
-		Core::Traits::EpsilonType<T>
+		Core::Traits::NormType<T>
 			frobenius_norm(const Core::Matrix<T>& matrix) {
 			using ReturnType = Core::Traits::EpsilonType<T>;
 			
@@ -27,7 +27,7 @@ namespace Algebra {
 
 
 		template<typename T>
-		Core::Traits::EpsilonType<T>			
+		Core::Traits::NormType<T>			
 			inductive_l_one_norm_columns(const Core::Matrix<T>& matrix) {
 			using ReturnType = Core::Traits::EpsilonType<T>;			
 			
@@ -48,7 +48,7 @@ namespace Algebra {
 
 
 		template<typename T>
-		Core::Traits::EpsilonType<T>			
+		Core::Traits::NormType<T>			
 			inductive_l_one_norm_rows(const Core::Matrix<T>& matrix) {
 			using ReturnType = Core::Traits::EpsilonType<T>;
 			
@@ -69,7 +69,7 @@ namespace Algebra {
 
 
 		template<typename T>
-		Core::Traits::EpsilonType<T>			
+		Core::Traits::NormType<T>			
 			max_norm(const Core::Matrix<T>& matrix) {
 			using ReturnType = Core::Traits::EpsilonType<T>;
 		
@@ -86,7 +86,7 @@ namespace Algebra {
 
 
 		template<typename T>
-		Core::Traits::EpsilonType<T>			
+		Core::Traits::NormType<T>			
 			l1_norm(const Core::Matrix<T>& matrix) {
 			using ReturnType = Core::Traits::EpsilonType<T>;
 		

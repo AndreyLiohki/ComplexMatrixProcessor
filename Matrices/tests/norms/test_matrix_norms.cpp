@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <complex>
+
 #include "../../include/matrixlib/algebra/norms.h" 
 #include "../../include/matrixlib/core/matrix.h"
 
