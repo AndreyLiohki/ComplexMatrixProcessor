@@ -1,3 +1,5 @@
+//TODO сделать оптимизацию QR-алгоритма путем реализации сдвигов
+
 #pragma once
 
 #include <complex>
@@ -5,13 +7,17 @@
 
 #include "../core/matrix.h"
 #include "../decompositions/qr_decomposition.h"
+#include "matrixlib/core/type_traits.h"
 
 namespace Algebra {
 	namespace Characteristics {
 
 		using Core::Traits::is_complex;
 		using Core::Traits::EpsilonType;
+		using Core::Traits::NormType;
 		using Core::Traits::default_epsilon;
+
+		using Core::Matrix;
 
 		template<typename T>
 		T trace(const Core::Matrix<T>& matrix) {
@@ -104,5 +110,9 @@ namespace Algebra {
 			return answer;
 		}
 	
+		template<typename T>
+		std::vector<NormType<T>> singular_values(const Matrix<T>& matrix){
+
+		}
 	}
 }
