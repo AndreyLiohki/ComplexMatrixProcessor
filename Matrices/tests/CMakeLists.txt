@@ -16,6 +16,7 @@ set(TEST_SOURCES
     operations_test/matrix_operations_test.cpp
     numerical_characteristics/matrix_numerical_characteristics.cpp
     norms/test_matrix_norms.cpp
+    lup_test/lup_decomposition_test.cpp
 )
 
 add_executable(test_runner ${TEST_SOURCES})

@@ -44,7 +44,7 @@ namespace Decompositions {
 				for (size_t i = 0; i < copy_matrix.get_columns(); ++i) {
 
 					size_t row_to_swap = i;
-					auto max_absolute_value = std::abs(matrix(i,i));
+					auto max_absolute_value = std::abs(copy_matrix(i,i));
 					for (size_t j = i+1; j < copy_matrix.get_rows(); ++j) {
 						if (std::abs(copy_matrix(j, i)) > max_absolute_value) {
 							max_absolute_value = std::abs(copy_matrix(j, i));
@@ -60,6 +60,7 @@ namespace Decompositions {
 						copy_matrix.swap_rows(i, row_to_swap);
 						P_.swap_rows(i, row_to_swap);
 						amount_of_permutations +=1 ;
+
 					}
 
 					for (size_t j = i+1; j < copy_matrix.get_rows(); ++j) {

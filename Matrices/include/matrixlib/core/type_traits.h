@@ -60,5 +60,5 @@ namespace Core {
         template<typename T>
         using NormType = typename norm_value_type<T>::type;
 
-        }
+    }
 }

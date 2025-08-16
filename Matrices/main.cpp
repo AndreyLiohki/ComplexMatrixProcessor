@@ -14,6 +14,12 @@ int main() {
 	Core::Matrix<double> matrix_1(2, 2);
 	Core::Matrix<double> matrix_2(2, 2);
 	Core::Matrix<std::complex<double>> matrix_3(2, 2);
+
+	Core::Matrix<double> m(3, 3);
+    m(0, 0) = 1; m(0, 1) = 2; m(0, 2) = 3;
+    m(1, 0) = 4; m(1, 1) = 5; m(1, 2) = 6;
+    m(2, 0) = 7; m(2, 1) = 8; m(2, 2) = 10;
+	
 	matrix_1(0, 0) = 2;
 	matrix_1(0, 1) = 3;
 	matrix_1(1, 0) = 9;
@@ -33,28 +39,11 @@ int main() {
 	auto result_2 = (matrix_1 * matrix_2);
 	auto result_3 = (matrix_1 - matrix_2);
 
-	Decompositions::LUP_Decomposition::Lup_Decomposition<double> obj(matrix_2);
-	std::cout << obj.get_L();
-	std::cout << std::endl;
-
-	std::cout << obj.get_U();
-	std::cout << std::endl; 
-
-	std::cout << obj.get_P();
-	std::cout << std::endl;
-
-	std::cout << Algebra::Characteristics::determinant(obj);
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	Decompositions::QR_Decomposition::Qr_Decomposition<std::complex<double>> obj_2(matrix_3);
-
-	std::vector<std::complex<double>> result_4= Algebra::Characteristics::eigen_values(obj_2, 100);
-
-	for(size_t i = 0; i < result_4.size(); ++i){
-		std::cout << result_4[i] << std::endl;
-	}
+	Decompositions::LUP_Decomposition::Lup_Decomposition<double> obj(m);
+	std::cout << obj.get_L()<<std::endl;
+	std::cout << obj.get_P()<<std::endl;
+	std::cout << obj.get_L()*obj.get_U()<<std::endl;
+	std::cout << obj.get_P()*m<<std::endl;
 
 
 }
